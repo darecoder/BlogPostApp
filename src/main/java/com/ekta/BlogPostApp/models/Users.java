@@ -25,20 +25,6 @@ public class Users {
             inverseJoinColumns = @JoinColumn(name = "RoleID"))
     private Set<Roles> roles;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "Users_Posts",
-            joinColumns = @JoinColumn(name = "PostId"),
-            inverseJoinColumns = @JoinColumn(name = "UserID"))
-    private Set<Posts> posts;
-
-    public Set<Posts> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<Posts> posts) {
-        this.posts = posts;
-    }
-
     public Users() {
     }
 
