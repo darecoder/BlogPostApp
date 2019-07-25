@@ -21,20 +21,6 @@ public class Posts {
 //    @Column(name = "UserID")
 //    private int userId;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "Users_Posts",
-            joinColumns = @JoinColumn(name = "PostId"),
-            inverseJoinColumns = @JoinColumn(name = "UserID"))
-    private Set<Posts> posts;
-
-    public Set<Posts> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(Set<Posts> posts) {
-        this.posts = posts;
-    }
-
     public Posts() {
     }
 

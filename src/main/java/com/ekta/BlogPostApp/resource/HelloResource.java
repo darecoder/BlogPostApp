@@ -35,13 +35,19 @@ public class HelloResource {
 
     @PreAuthorize("hasAnyRole('USER') || hasAnyRole('ADMIN')")
     @GetMapping("/secured/posts")
-    public List<Posts> alternate() {
+    public List<Posts> getPosts() {
         return postRepository.findAll();
     }
 
-    @PostMapping("/addPost")
+    @PostMapping("secured/addpost")
     public List<Posts> addPost(@RequestBody final Posts post){
         postRepository.save(post);
+        return postRepository.findAll();
+    }
+
+    @PreAuthorize("hasAnyRole('USER') || hasAnyRole('ADMIN')")
+    @GetMapping("/secured/{userId}/posts")
+    public List<Posts> findPosts() {
         return postRepository.findAll();
     }
 
