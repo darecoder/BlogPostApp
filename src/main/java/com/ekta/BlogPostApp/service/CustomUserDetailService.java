@@ -1,6 +1,5 @@
 package com.ekta.BlogPostApp.service;
 
-import com.ekta.BlogPostApp.models.CustomUserDetails;
 import com.ekta.BlogPostApp.models.Users;
 import com.ekta.BlogPostApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

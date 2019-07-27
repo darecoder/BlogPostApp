@@ -1,17 +1,11 @@
 package com.ekta.BlogPostApp.resource;
 
-import com.ekta.BlogPostApp.exception.ResourceNotFoundException;
 import com.ekta.BlogPostApp.models.Posts;
 import com.ekta.BlogPostApp.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
-
 
 @RequestMapping("/")
 @RestController

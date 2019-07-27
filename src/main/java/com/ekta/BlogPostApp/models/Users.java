@@ -1,29 +1,45 @@
 package com.ekta.BlogPostApp.models;
 
+import com.ekta.BlogPostApp.audit.DateAudit;
+
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Set;
 
 @Entity
-@Table(name = "Users")
-public class Users {
+@Table(name = "Users", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "username"
+        }),
+        @UniqueConstraint(columnNames = {
+                "email"
+        })
+})
+public class Users extends DateAudit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserID")
     private int id;
+
+    @Email
     @Column(name = "Email")
     private String email;
+
     @Column(name = "Password")
     private String password;
+
     @Column(name = "Username")
     private String username;
+
     @Column(name = "Active")
     private int active;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Users_Roles",
             joinColumns = @JoinColumn(name = "UserID"),
             inverseJoinColumns = @JoinColumn(name = "RoleID"))
-    private Set<Roles> roles;
+    private Set<Role> roles;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "Users_Posts",
@@ -42,13 +58,11 @@ public class Users {
     public Users() {
     }
 
-    public Users(Users users) {
-        this.active = users.active;
-        this.email = users.email;
-        this.id = users.id;
-        this.username = users.username;
-        this.password = users.password;
-        this.roles = users.roles;
+    public Users(String username, String email, String password, int active) {
+        this.active = active;
+        this.email = email;
+        this.username = username;
+        this.password = password;
     }
 
     public int getId() {
@@ -71,7 +85,7 @@ public class Users {
         return active;
     }
 
-    public Set<Roles> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
@@ -95,7 +109,7 @@ public class Users {
         this.active = active;
     }
 
-    public void setRoles(Set<Roles> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }
