@@ -32,9 +32,6 @@ public class Users extends DateAudit {
     @Column(name = "Username")
     private String username;
 
-    @Column(name = "Active")
-    private int active;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Users_Roles",
             joinColumns = @JoinColumn(name = "UserID"),
@@ -58,8 +55,7 @@ public class Users extends DateAudit {
     public Users() {
     }
 
-    public Users(String username, String email, String password, int active) {
-        this.active = active;
+    public Users(String username, String email, String password) {
         this.email = email;
         this.username = username;
         this.password = password;
@@ -81,10 +77,6 @@ public class Users extends DateAudit {
         return username;
     }
 
-    public int getActive() {
-        return active;
-    }
-
     public Set<Role> getRoles() {
         return roles;
     }
@@ -103,10 +95,6 @@ public class Users extends DateAudit {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public void setActive(int active) {
-        this.active = active;
     }
 
     public void setRoles(Set<Role> roles) {

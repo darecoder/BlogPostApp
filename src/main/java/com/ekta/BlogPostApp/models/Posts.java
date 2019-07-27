@@ -1,16 +1,23 @@
 package com.ekta.BlogPostApp.models;
 
+import com.ekta.BlogPostApp.audit.UserDateAudit;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.Instant;
 import java.util.Set;
 
 @Table(name = "Posts")
 @Entity
-public class Posts {
+public class Posts extends UserDateAudit {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PostID")
-    private int postId;
+    private long postId;
+
+    @Column(name = "Title")
+    private String title;
 
     @Column(name = "ImageUrl")
     private String image;
@@ -18,14 +25,18 @@ public class Posts {
     @Column(name = "Tag")
     private String tag;
 
-//    @Column(name = "UserID")
-//    private int userId;
+    @NotNull
+    private Instant expirationDateTime;
 
     public Posts() {
     }
 
-    public int getPostId() {
+    public long getPostId() {
         return postId;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public String getImage() {
@@ -36,12 +47,16 @@ public class Posts {
         return tag;
     }
 
-//    public int getUserId() {
-//        return userId;
-//    }
+    public Instant getExpirationDateTime() {
+        return expirationDateTime;
+    }
 
     public void setPostId(int postId) {
         this.postId = postId;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setImage(String image) {
@@ -52,7 +67,7 @@ public class Posts {
         this.tag = tag;
     }
 
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
+    public void setExpirationDateTime(Instant expirationDateTime) {
+        this.expirationDateTime = expirationDateTime;
+    }
 }
