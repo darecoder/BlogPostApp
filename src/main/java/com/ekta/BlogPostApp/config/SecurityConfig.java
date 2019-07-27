@@ -1,6 +1,8 @@
 package com.ekta.BlogPostApp.config;
 
+import com.ekta.BlogPostApp.security.CustomUserDetailsService;
 import com.ekta.BlogPostApp.security.JwtAuthenticationEntryPoint;
+import com.ekta.BlogPostApp.security.JwtAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
