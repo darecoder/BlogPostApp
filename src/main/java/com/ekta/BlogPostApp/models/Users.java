@@ -20,7 +20,7 @@ public class Users extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserID")
-    private int id;
+    private long id;
 
     @Email
     @Column(name = "Email")
@@ -65,7 +65,7 @@ public class Users extends DateAudit {
         this.password = password;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -89,7 +89,7 @@ public class Users extends DateAudit {
         return roles;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
