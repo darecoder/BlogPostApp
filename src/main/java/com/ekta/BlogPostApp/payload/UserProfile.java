@@ -8,11 +8,11 @@ public class UserProfile {
     private Instant joinedAt;
     private Long postCount;
 
-    public UserProfile(Long id, String username, String name, Instant joinedAt, Long pollCount, Long voteCount) {
+    public UserProfile(Long id, String username, Instant joinedAt, Long postCount) {
         this.id = id;
         this.username = username;
         this.joinedAt = joinedAt;
-        this.postCount = pollCount;
+        this.postCount = postCount;
     }
 
     public Long getId() {
@@ -43,7 +43,7 @@ public class UserProfile {
         return postCount;
     }
 
-    public void setPostCount(Long pollCount) {
-        this.postCount = pollCount;
+    public void setPostCount(Long postCount) {
+        this.postCount = postCount;
     }
 }

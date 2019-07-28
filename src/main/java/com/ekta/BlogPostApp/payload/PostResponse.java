@@ -14,10 +14,6 @@ public class PostResponse {
     private Instant expirationDateTime;
     private Boolean isExpired;
 
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    private Long selectedChoice;
-    private Long totalVotes;
-
     public Long getId() {
         return id;
     }

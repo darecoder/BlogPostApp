@@ -1,14 +1,12 @@
 package com.ekta.BlogPostApp.models;
 
 import com.ekta.BlogPostApp.audit.UserDateAudit;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.Instant;
-import java.util.Set;
 
-@Table(name = "Posts")
 @Entity
+@Table(name = "Posts")
 public class Posts extends UserDateAudit {
 
     @Id
@@ -24,9 +22,6 @@ public class Posts extends UserDateAudit {
 
     @Column(name = "Tag")
     private String tag;
-
-    @NotNull
-    private Instant expirationDateTime;
 
     public Posts() {
     }
@@ -47,10 +42,6 @@ public class Posts extends UserDateAudit {
         return tag;
     }
 
-    public Instant getExpirationDateTime() {
-        return expirationDateTime;
-    }
-
     public void setPostId(int postId) {
         this.postId = postId;
     }
@@ -65,9 +56,5 @@ public class Posts extends UserDateAudit {
 
     public void setTag(String tag) {
         this.tag = tag;
-    }
-
-    public void setExpirationDateTime(Instant expirationDateTime) {
-        this.expirationDateTime = expirationDateTime;
     }
 }
