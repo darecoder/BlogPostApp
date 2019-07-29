@@ -23,7 +23,7 @@ import javax.validation.Valid;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/posts")
+@RequestMapping("/api/posts")
 public class PostController {
     @Autowired
     private PostRepository postRepository;
@@ -56,7 +56,7 @@ public class PostController {
                 .body(new ApiResponse(true, "Posts Created Successfully"));
     }
 
-    @GetMapping("/{pollId}")
+    @GetMapping("/{postId}")
     public PostResponse getPostsById(@CurrentUser UserPrincipal currentUser,
                                     @PathVariable Long pollId) {
         return postService.getPostsById(pollId, currentUser);
