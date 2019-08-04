@@ -37,10 +37,12 @@ public class PostController {
     private static final Logger logger = LoggerFactory.getLogger(PostController.class);
 
     @GetMapping
-    public PagedResponse<PostResponse> getPosts(@CurrentUser UserPrincipal currentUser,
+    public String getPosts(@CurrentUser UserPrincipal currentUser,
                                                 @RequestParam(value = "page", defaultValue = AppConstants.DEFAULT_PAGE_NUMBER) int page,
                                                 @RequestParam(value = "size", defaultValue = AppConstants.DEFAULT_PAGE_SIZE) int size) {
-        return postService.getAllPosts(currentUser, page, size);
+        //Changes made for frontend
+        PagedResponse<PostResponse> postResponse = postService.getAllPosts(currentUser, page, size);
+        return "allposts";
     }
 
     @PostMapping

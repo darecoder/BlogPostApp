@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog love</title>
+</head>
+<body>
+<% for ( content : postResponse.content ) { %>
+<h2> <% content.title%> </h2>
+<img src="<% content.image %>">
+<h3> <% content.tag %></h3>
+<% } %>
+</body>
+</html>

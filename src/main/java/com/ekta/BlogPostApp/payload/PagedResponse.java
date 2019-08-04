@@ -21,6 +21,7 @@ public class PagedResponse<T> {
         this.totalElements = totalElements;
         this.totalPages = totalPages;
         this.last = last;
+
     }
 
     public List<T> getContent() {
